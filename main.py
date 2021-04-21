@@ -1,7 +1,9 @@
 
 import struct
 import os
+from sklearn.model_selection import train_test_split
 import cv2
+import numpy as np
 #from PIL import Image
 #import pandas as pd
 from openpyxl import load_workbook
@@ -40,8 +42,8 @@ def get_training_data():
     return training_list
 
 
-#print(struct.calcsize("P")*8)
-get_training_data()
+# print(struct.calcsize("P")*8)
+X = get_training_data()
 # print(len(training_list))
 
 
@@ -55,5 +57,8 @@ def get_labels():
         labels.append(i.value)
     return labels[14:]
 
-    
+
+y = get_labels()
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
+#print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 # print(len(get_labels()))
