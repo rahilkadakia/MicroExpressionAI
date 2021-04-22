@@ -9,16 +9,17 @@ from openpyxl import load_workbook
 import imageio
 
 
-os.chdir("D:\\SAMMDataset\\SAMM")
+os.chdir("D:\\BE_Project\\SAMM")
 # print(os.getcwd())
-path = "D:\\SAMMDataset\\SAMM"
+path = "D:\\BE_Project\\SAMM"
 # print(os.path.join(path))
 image_rows, image_columns, image_depth = 64, 64, 96
 
 
 def get_training_data():
     training_list = []
-    sub_dir = os.path.join(path, "SAMM")
+    # sub_dir = os.path.join(path, "SAMM")
+    sub_dir = path
     for sub_img in os.listdir(sub_dir):
         print(sub_img)
         for video in os.listdir(os.path.join(sub_dir + "\\" + sub_img)):
@@ -59,5 +60,6 @@ def get_labels():
 
 y = get_labels()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
-#print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
+# print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 # print(len(get_labels()))
+# print (y)
